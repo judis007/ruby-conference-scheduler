@@ -10,6 +10,12 @@ class MainTalks
     @finished_events = []
   end
 
+  class << self
+    def current_time
+      @@current_time
+    end
+  end
+
   def start_talking(main_talks, current_time, ending_time)
     @@current_time = current_time
     main_talks.each do |talk|
@@ -22,9 +28,5 @@ class MainTalks
       break unless (@@current_time + talk_duration.minutes) <= ending_time
     end
     finished_events
-  end
-
-  def self.current_time
-    @@current_time
   end
 end
